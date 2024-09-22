@@ -12,7 +12,7 @@ export default function Card() {
                 {/*  dark:bg-orange-300 */}
                 
                 {/* Heading */}
-                <h1 className="text-lg font-semibold text-white  dark:bg-black p-1 rounded-md dark:text-orange-500 inline-block">
+                <h1 className="text-lg font-semibold text-white  dark:bg-zinc-800 p-1 rounded-md dark:text-orange-500 inline-block">
                 Island Gateway
                 </h1>
 

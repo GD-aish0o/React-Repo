@@ -1,4 +1,9 @@
-export default function Card() {
+import React from "react";
+
+export default function Card({Main, ClickTo="Click Here"}) {
+
+  console.log(Main, ClickTo);
+  
   return (
     <div >
         <div 
@@ -13,7 +18,7 @@ export default function Card() {
                 
                 {/* Heading */}
                 <h1 className="text-lg font-semibold text-white  dark:bg-zinc-800 p-1 rounded-md dark:text-orange-500 inline-block">
-                Island Gateway
+                {Main}
                 </h1>
 
                 {/* Paragraph text */}
@@ -22,9 +27,7 @@ export default function Card() {
                 </p>
 
                 {/* Button for 'View Profile' */}
-                <button className="mt-2 inline-flex cursor-pointer items-center text-sm font-semibold text-white bg-teal-700 dark:bg-orange-500 dark:text-black">
-                View Profile
-                </button>
+                <button className="mt-2 inline-flex cursor-pointer items-center text-sm font-semibold text-white bg-teal-700 dark:bg-orange-500 dark:text-black">{ClickTo}</button>
             </div>
 
         </div>

@@ -1,8 +1,12 @@
 import { useState } from 'react'
+import mainProf from "./assets/toothless-bg.jpg"
 import './App.css'
+
+// Counter App.
 
 function App() {
   const [count, setCount] = useState(0)
+  
 
   return (
     <>
@@ -10,12 +14,12 @@ function App() {
 
       <figure className='md:flex  bg-green-300 text-white rounded-xl m-8 p-8 md:p-0 dark:bg-slate-800'>
 
-        
-        <img className='w-24 h-24 md:w-48 md:h-auto md:rounded-none rounded-full mx-auto' width="384" height="512" src="url('https://images.pexels.com/photos/5301060/pexels-photo-5301060.jpeg?auto=compress&cs=tinysrgb&w=300')" alt="Image of Night Fury" />
+      
+        <img className='w-24 h-24 md:w-48 md:h-auto md:rounded-none rounded-full mx-auto' width="384" height="512" src={mainProf} alt="Image of Night Fury" />
         <div className='pt-6 md:p-8 text-center md:text-left space-y-4'>
           <blockquote>
             <p className='text-lg font-medium'>
-              "This is my 2nd project of React with <strong>Chai Aur Code</strong>. Thaught by Sir <em>Hitesh Choudhary</em>. It's a series called Chai Aur React divided into two different One-Shot videos on YouTube."
+              "This is my 2nd project of React with <strong>Chai Aur Code</strong>. Taught by Sir <em>Hitesh Choudhary</em>. It's a series called Chai Aur React divided into two different One-Shot videos on YouTube."
             </p>
           </blockquote>
 

@@ -1,0 +1,64 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+input[type="range"]::-webkit-slider-runnable-track {
+    width: 100%;
+    /* height: 2px; */
+    background: white; /* sky-900 */
+    border-radius: 48px;
+  }
+  
+  input[type="range"]::-webkit-slider-thumb {
+    appearance: none;
+    width: 16px;
+    height: 16px;
+    background-color: #064a6e; /* white */
+    border-radius: 100px;;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+    cursor: pointer;
+  }
+  
+  input[type="range"]::-moz-range-thumb {
+    width: 16px;
+    /* height: 16px; */
+    background-color: #0284c7; /* white */
+    border-radius: 50%;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+    cursor: pointer;
+  }
+  
+  input[type="range"]::-ms-thumb {
+    width: 16px;
+    /* height: 16px; */
+    background-color: #0284c7; /* white */
+    border-radius: 50%;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+    cursor: pointer;
+  }
+  
+  input[type="range"]::-moz-range-track {
+    width: 100%;
+    /* height: 2px; */
+    background: white; /* sky-900 */
+    border-radius: 4px;
+  }
+  
+  input[type="range"]::-ms-track {
+    width: 100%;
+    /* height: 2px; */
+    background: transparent;
+    border-color: transparent;
+    color: transparent;
+  }
+  
+  input[type="range"]::-ms-fill-lower {
+    background: white; /* sky-900 */
+    border-radius: 4px;
+  }
+  
+  input[type="range"]::-ms-fill-upper {
+    background: white; /* sky-900 */
+    border-radius: 4px;
+  }
+  

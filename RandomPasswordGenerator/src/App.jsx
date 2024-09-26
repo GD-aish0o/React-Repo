@@ -1,16 +1,15 @@
-import { useState, useCallback, useEffect } from "react";
+import { useState, useCallback, useEffect, useRef } from "react";
 
 function PasswordGenerator() {
   const [Charlength, SetLength] = useState(8);
   const [inputNumbers, AllowNumbers] = useState(false);
   const [SpecialChars, AllowSpChars] = useState(false);
   const [Password, SetPassword] = useState("");
-
+  const PasswordRef = useRef(null)
 
   const PwdGen = useCallback(() => {
     let password = "";
     let string = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
-
     if (inputNumbers) string += "1234567890"
     if (SpecialChars) string += ".,/?!@#$%^&*()_+=-[]}{';:><~"
     // all symbols in my keyboard.
@@ -24,7 +23,13 @@ function PasswordGenerator() {
 
   }, [Charlength, inputNumbers, SpecialChars, SetPassword]);
 
-  useEffect(() => {
+  const copyToClipboard = useCallback(() => {
+      PasswordRef.current?.select();
+      PasswordRef.current?.setSelectionRange(0,36);
+      window.navigator.clipboard.writeText(Password)
+  }, [Password])
+
+  useEffect(() => { 
     PwdGen()
   }, [Charlength, inputNumbers, SpecialChars, PwdGen])
 
@@ -42,9 +47,12 @@ function PasswordGenerator() {
             className="center py- px-3  mx-3 my-3 py-2 rounded-bl-sm rounded-tl-sm rounded-sm content-center mr-0 text-sky-900 w-full"
             placeholder="Password"
             readOnly
+            ref={PasswordRef}
         />
         <br/>
-        <button className="outline-none bg-blue-900 text-white px-3 my-2 rounded-br-xl rounded-tr-xl ml-0 shrink-0">Copy</button>
+        <button 
+        onClick={copyToClipboard }
+        className="outline-none bg-blue-900 text-white px-3 my-2 rounded-br-xl rounded-tr-xl ml-0 shrink-0">Copy</button>
       </div>
 
       <div className="Flex text-md  gap-x-2">

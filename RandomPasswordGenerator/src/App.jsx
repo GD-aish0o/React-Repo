@@ -5,13 +5,13 @@ function PasswordGenerator() {
   const [inputNumbers, AllowNumbers] = useState(false);
   const [SpecialChars, AllowSpChars] = useState(false);
   const [Password, SetPassword] = useState("");
-  const PasswordRef = useRef(null)
+  const PasswordRef = useRef(null);
 
   const PwdGen = useCallback(() => {
     let password = "";
     let string = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
-    if (inputNumbers) string += "1234567890"
-    if (SpecialChars) string += ".,/?!@#$%^&*()_+=-[]}{';:><~"
+    if (inputNumbers) string += "1234567890";
+    if (SpecialChars) string += ".,/?!@#$%^&*()_+=-[]}{';:><~";
     // all symbols in my keyboard.
 
     for (let i = 1; i <= Charlength; i++) {
@@ -20,20 +20,18 @@ function PasswordGenerator() {
     }
 
     SetPassword(password);
-
   }, [Charlength, inputNumbers, SpecialChars, SetPassword]);
 
   const copyToClipboard = useCallback(() => {
-      PasswordRef.current?.select();
-      PasswordRef.current?.setSelectionRange(0,36);
-      window.navigator.clipboard.writeText(Password)
-  }, [Password])
+    PasswordRef.current?.select();
+    PasswordRef.current?.setSelectionRange(0, 36);
+    window.navigator.clipboard.writeText(Password);
+  }, [Password]);
 
-  useEffect(() => { 
-    PwdGen()
-  }, [Charlength, inputNumbers, SpecialChars, PwdGen])
+  useEffect(() => {
+    PwdGen();
+  }, [Charlength, inputNumbers, SpecialChars, PwdGen]);
 
-  
   return (
     <div className=" rounded-sm bg-slate-300 h-auto w-full max-w-lg shadow-lg px-4  mx-auto py-8 shadow-sky-950 my-8 text-sky-900">
       <h1 className="text-3xl text-center text-white bg-sky-900 px-2 py-4 rounded-full font-semibold">
@@ -42,21 +40,24 @@ function PasswordGenerator() {
 
       <div className="flex shadow rounded-sm my-4 overflow-hidden ">
         <input
-            type="text"
-            value={Password}
-            className="center py- px-3  mx-3 my-3 py-2 rounded-bl-sm rounded-tl-sm rounded-sm content-center mr-0 text-sky-900 w-full"
-            placeholder="Password"
-            readOnly
-            ref={PasswordRef}
+          type="text"
+          value={Password}
+          className="center py- px-3  mx-3 my-3 py-2 rounded-bl-sm rounded-tl-sm rounded-sm content-center mr-0 text-sky-900 w-full"
+          placeholder="Password"
+          readOnly
+          ref={PasswordRef}
         />
-        <br/>
-        <button 
-        onClick={copyToClipboard }
-        className="outline-none bg-blue-900 text-white px-3 my-2 rounded-br-xl rounded-tr-xl ml-0 shrink-0">Copy</button>
+        <br />
+        <button
+          onClick={copyToClipboard}
+          className="outline-none bg-blue-900 text-white px-3 my-2 rounded-br-xl rounded-tr-xl ml-0 shrink-0"
+        >
+          Copy
+        </button>
       </div>
 
       <div className="Flex text-md  gap-x-2">
-          <div className="Flex text-md items-center gap-x-1 justify-center ">
+        <div className="Flex text-md items-center gap-x-1 justify-center ">
           <input
             name="Range"
             type="range"
@@ -64,44 +65,46 @@ function PasswordGenerator() {
             min={8}
             max={36}
             value={Charlength}
-            onChange={(e) => {SetLength(e.target.value)}}
-            
+            onChange={(e) => {
+              SetLength(e.target.value);
+            }}
           />
-
-              <label htmlFor="Range" className="font-semibold"> Length: {Charlength}</label>
-          </div>
-          <div className="flex justify-between px-20 py-3 font-semibold">
-             <div className="flex items-center gap-x-1">
-              <input 
+          <label htmlFor="Range" className="font-semibold">
+            {" "}
+            Length: {Charlength}
+          </label>
+        </div>
+        <div className="flex justify-between px-20 py-3 font-semibold">
+          <div className="flex items-center gap-x-1">
+            <input
               type="checkbox"
               defaultChecked={AllowNumbers}
               id="numberInput"
               onChange={() => {
-                AllowNumbers((prev) => !prev )
-              }} />
-              <label htmlFor="numberInput">Numbers</label>
-              
-             </div>
+                AllowNumbers((prev) => !prev);
+              }}
+            />
 
-             <div className="flex items-center gap-x-1">
-                {/* ------------------------------------------ */}
-
-              <input 
-              type="checkbox"
-               defaultChecked={AllowSpChars}
-               id="SpecialCharacters"
-               onChange={()=> {
-                SpecialChars((prev) => !prev);
-               }} />
-               <label htmlFor="SpecialCharacters">Special Characters</label>
-             </div>
-
+            <label htmlFor="numberInput">Numbers</label>
           </div>
 
+          <div className="flex items-center gap-x-1">
+            {/* ------------------------------------------ */}
+
+            <input
+              type="checkbox"
+              defaultChecked={SpecialChars}
+              id="SpecialCharacters"
+              onChange={() => {
+                AllowSpChars((previous) => !previous);
+              }}
+            />
+            <label htmlFor="SpecialCharacters">Special Characters</label>
+          </div>
+        </div>
       </div>
     </div>
   );
 }
 
 export default PasswordGenerator;
-
